@@ -7,8 +7,8 @@ function App() {
 
   const [jokes, setJokes] = useState(JokesData);
   const [holdJokes, setHoldJokes] = useState({
-    setup: "",
-    punchline: "",
+    setup: "I got my daughter a fridge for her birthday.",
+    punchline: "I can't wait to see her face light up when she opens it.",
   });
 
   function getMoreJokes() {
@@ -16,7 +16,13 @@ function App() {
     const randomNumber = Math.floor(Math.random() * funnyJokes.length);
     const plot = funnyJokes[randomNumber];
     // console.log(plot)
-    setHoldJokes(plot);
+    setHoldJokes(prevState => {
+      return {
+        ...prevState,
+        setup: plot.setup,
+        punchline: plot.punchline
+      }
+    });
   }
 
   return (
@@ -26,7 +32,7 @@ function App() {
       </div>
       <div>
         <button className="btn--joke" onClick={getMoreJokes}>
-          Wants Some pun
+          Squish Me
         </button>
       </div>
     </div>
