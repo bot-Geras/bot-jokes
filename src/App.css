@@ -85,23 +85,19 @@ button {
 
 .btn--joke:hover {
     border: 1px solid red;
-    color: black;
+    color: white;
     background-color: purple;
 }
 
-@media (min-width: 370px) {
+@media (min-width: 600px) {
+
+
     .main {
        flex-direction: column;
-    }
-    h1 {
-        
-    }
-    p {
-        
-    }
-
-    .joke {
-        
+       justify-content: space-around;
+       align-items: center;
+       
+       min-width: 600px;
     }
 
     
