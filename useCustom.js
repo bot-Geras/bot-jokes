@@ -15,12 +15,13 @@ function useCustoms() {
       
       setHoldJokes(prevState => {
         return {
-          ...prevState,
+         
           setup: plot.setup,
           punchline: plot.punchline
         }
       });
     }
+    // console.log(getMoreJokes())
 
     return {holdJokes, getMoreJokes}
 

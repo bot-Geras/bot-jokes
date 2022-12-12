@@ -1,10 +1,13 @@
 import "./App.css";
 import Jokes from "./components/Jokes";
 import useCustom from "../useCustom";
+import { useEffect } from "react";
+import { useSpeechSynthesis } from 'react-speech-kit'; 
 
 function App() {
   const { holdJokes, getMoreJokes } = useCustom();
-
+  const {speak} = useSpeechSynthesis()
+  // console.log(holdJokes)
   return (
     <div className="main">
       <div>
