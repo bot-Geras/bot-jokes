@@ -6,7 +6,7 @@ function useCustom() {
   const [jokes, setJokes] = useState(JokesData);
   const [holdJokes, setHoldJokes] = useState({
     setup: "Let me tell you a joke",
-    punchline: "Squish me",
+    punchline: `O press "j" `,
   });
   const [loading, setLoading] = useState(false);
 
