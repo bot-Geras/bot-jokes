@@ -1,30 +1,40 @@
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react";
 import JokesData from "./jokesData";
 
-function useCustoms() {
-    const [jokes, setJokes] = useState(JokesData);
-    const [holdJokes, setHoldJokes] = useState({
-      setup: "I got my daughter a fridge for her birthday.",
-      punchline: "I can't wait to see her face light up when she opens it.",
+function useCustom() {
+  const synth = window.speechSynthesis;
+  const [jokes, setJokes] = useState(JokesData);
+  const [holdJokes, setHoldJokes] = useState({
+    setup: "Let me tell you a joke",
+    punchline: "Squish me",
+  });
+  const [loading, setLoading] = useState(false);
+
+  function getMoreJokes() {
+    const funnyJokes = jokes;
+    const randomNumber = Math.floor(Math.random() * funnyJokes.length);
+    const plot = funnyJokes[randomNumber];
+    // console.log(plot, "hi");
+
+    setHoldJokes((prevState) => {
+      return {
+        ...prevState,
+        setup: plot.setup,
+        punchline: plot.punchline,
+      };
     });
-  
-    function getMoreJokes() {
-      const funnyJokes = jokes;
-      const randomNumber = Math.floor(Math.random() * funnyJokes.length);
-      const plot = funnyJokes[randomNumber];
-      
-      setHoldJokes(prevState => {
-        return {
-         
-          setup: plot.setup,
-          punchline: plot.punchline
-        }
-      });
-    }
-    // console.log(getMoreJokes())
 
-    return {holdJokes, getMoreJokes}
+    const setupUtter = new SpeechSynthesisUtterance(plot.setup);
+    const punchUtter = new SpeechSynthesisUtterance(plot.punchline);
+    synth.speak(setupUtter);
+    setTimeout(() => {
+      synth.speak(punchUtter);
+    }, 3000);
+  }
 
+  // console.log(getMoreJokes())
+
+  return { holdJokes, getMoreJokes, loading };
 }
 
-export default useCustoms
+export default useCustom;
