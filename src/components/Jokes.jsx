@@ -1,11 +1,10 @@
-import useCustom from "../../useCustom";
 export default function Joke(props) {
- 
-
+    const setup = <h1>{props.setup}</h1>
+      const punch = <p>{props.delivery}</p>
   return (
     <div className="joke">
-      {!loading ? setup : <h1>loading...</h1>}
-      {!loading ? punch : <h1>loading...</h1>}
+      <h1>{props.setup}</h1>
+      <p>{props.delivery}</p>
     </div>
   );
 }
