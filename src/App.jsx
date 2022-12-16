@@ -4,20 +4,11 @@ import { useEffect, useState } from "react";
 
 function App() {
   const synth = window.speechSynthesis;
-
- 
   const [pun, setPun] = useState(null);
-
   const [language, setLanguage] = useState("en");
   const [errMessage, setErrMessage] = useState(null);
 
   function handleClick(e) {
-   
-
-    // setErrMessage(null);
-    // setIsLoading(true);
-    // setPun(null);
-
     fetch(`https://v2.jokeapi.dev/joke/Any`)
       .then((res) => res.json())
       .then((data) => filterDataType(data));
@@ -56,7 +47,6 @@ function App() {
   }
 
   useEffect(() => {
-    
     window.addEventListener("keypress", (KeyboardEvent) => {
       if (KeyboardEvent.key.toLowerCase === "j") {
         handleClick();
