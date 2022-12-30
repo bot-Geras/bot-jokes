@@ -8,6 +8,14 @@ function App() {
   const [language, setLanguage] = useState("en");
   const [errMessage, setErrMessage] = useState(null);
 
+  useEffect(() => {
+    window.addEventListener("keypress", (KeyboardEvent) => {
+      if (KeyboardEvent.key.toLowerCase === "j") {
+        handleClick();
+      }
+    });
+  }, []);
+
   function handleClick(e) {
     fetch(`https://v2.jokeapi.dev/joke/Any`)
       .then((res) => res.json())
@@ -46,13 +54,7 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    window.addEventListener("keypress", (KeyboardEvent) => {
-      if (KeyboardEvent.key.toLowerCase === "j") {
-        handleClick();
-      }
-    });
-  }, []);
+ 
   return (
     <div className="main">
       <div className="language">
